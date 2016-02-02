@@ -7,7 +7,7 @@
     Sara has label 0
     Chris has label 1
 """
-    
+import numpy as np    
 import sys
 from time import time
 sys.path.append("../tools/")
@@ -40,14 +40,39 @@ features_train = features_train[:len(features_train)/100]
 labels_train = labels_train[:len(labels_train)/100]
 
 clf.fit(features_train, labels_train)
-stop_time = time.time()
-print("example run in %.2fs" % (stop_time - start_time))
+#stop_time = time.time()
+#print("example run in %.2fs" % (stop_time - start_time))
 
 
 pred = clf.predict(features_test)
+#print(type(pred))
+#print(head(pred))
+#view(pred)
+#print(pred[1,10])
+#print(pred[26])
+#print(pred[50])
+#prediction = pred[10,26,50]
 
-stop_time = time.time()
-print("example run in %.2fs" % (stop_time - start_time))
+print(pred.sum())
+x = (np.where( pred == 1 ))
+
+print(np.shape(x))
+#print(pred[1:10])
+#np.count_nonzero(pred)
+
+#print(count_nonzero(pred))
+#print(pred.shape)
+#print(prediction)
+
+
+#stop_time = time.time()
+#print("example run in %.2fs" % (stop_time - start_time))
+
+
+
+
+
+
 
 from sklearn.metrics import accuracy_score
 acc = accuracy_score(pred, labels_test)
